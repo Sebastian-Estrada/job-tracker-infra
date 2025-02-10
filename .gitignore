@@ -1,0 +1,24 @@
+# Directorio de configuración local de Terraform
+.terraform/
+
+# Archivos de estado de Terraform (contienen información sensible)
+*.tfstate
+*.tfstate.backup
+
+# Archivos de estado generados por Terraform Cloud/Enterprise
+.crash.log
+*.tfstate.d/
+
+# Archivos de salida de ejecución
+terraform.tfvars
+terraform.tfvars.json
+override.tf
+override.tf.json
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Planes de ejecución generados
+*.tfplan
+
+# Archivos de logs o debugging
+terraform.log
