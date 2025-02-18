@@ -63,3 +63,14 @@ variable "frontend_replicas" {
   type        = number
   default     = 2
 }
+
+variable "rds_username" {
+  description = "The username for the database."
+  type        = string
+}
+
+variable "rds_password" {
+  description = "The password for the database."
+  type        = string
+  sensitive   = true
+}

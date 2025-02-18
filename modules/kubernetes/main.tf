@@ -40,12 +40,12 @@ resource "kubernetes_deployment" "backend" {
 
           resources {
             limits = {
-              cpu    = "500m"
-              memory = "512Mi"
-            }
-            requests = {
               cpu    = "250m"
               memory = "256Mi"
+            }
+            requests = {
+              cpu    = "125m"
+              memory = "128Mi"
             }
           }
         }
@@ -108,12 +108,12 @@ resource "kubernetes_deployment" "frontend" {
 
           resources {
             limits = {
-              cpu    = "500m"
-              memory = "512Mi"
-            }
-            requests = {
               cpu    = "250m"
               memory = "256Mi"
+            }
+            requests = {
+              cpu    = "125m"
+              memory = "128Mi"
             }
           }
         }

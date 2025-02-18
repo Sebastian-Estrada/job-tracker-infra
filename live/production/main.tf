@@ -47,3 +47,31 @@ module "kubernetes" {
   backend_replicas  = var.backend_replicas
   frontend_replicas = var.frontend_replicas
 }
+
+data "aws_security_group" "default" {
+  filter {
+    name   = "group-name"
+    values = ["default"]
+  }
+
+  vpc_id = data.aws_vpc.default.id
+}
+
+# terraform apply -target=module.rds
+module "rds" {
+  source               = "../../modules/rds"
+  db_name              = "job_tracker"
+  instance_class       = "db.t3.medium"
+  allocated_storage    = 20
+  engine               = "postgres"
+  engine_version       = "14.15"
+  multi_az             = false
+  username             = var.rds_username
+  password             = var.rds_password
+  vpc_security_group_ids = [data.aws_security_group.default.id]
+  subnet_ids           = data.aws_subnets.default.ids
+  tags = {
+    Environment = "production"
+    Project     = "JobTracker"
+  }
+}
