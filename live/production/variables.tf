@@ -67,6 +67,7 @@ variable "frontend_replicas" {
 variable "rds_username" {
   description = "The username for the database."
   type        = string
+  default     = "postgres"
 }
 
 variable "rds_password" {
