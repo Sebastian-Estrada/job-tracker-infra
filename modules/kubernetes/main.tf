@@ -57,7 +57,7 @@
 #      - Name: frontend
 #    - Spec:
 #      - Selector: Matches labels app = "frontend".
-#      - Port: Exposes port 80 and targets port 5173.
+#      - Port: Exposes port 80 and targets port 80.
 #      - Type: LoadBalancer.
 
 

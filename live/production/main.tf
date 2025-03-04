@@ -75,3 +75,18 @@ module "rds" {
     Project     = "JobTracker"
   }
 }
+
+module "ebs" {
+  source = "../../modules/ebs"
+}
+
+module "prometheus_grafana" {
+  source = "../../modules/kubernetes/prometheus-grafana"
+
+  cluster_endpoint = module.eks.cluster_endpoint
+  cluster_ca_cert  = module.eks.cluster_certificate_authority_data
+  cluster_token    = data.aws_eks_cluster_auth.cluster.token
+  prometheus_volume_id = module.ebs.prometheus_volume_id
+  grafana_volume_id    = module.ebs.grafana_volume_id
+}
+
