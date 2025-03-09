@@ -53,10 +53,11 @@ resource "helm_release" "prometheus" {
 
   values = [
     <<-EOT
+    alertmanager:
+      enabled: false
+    alertmanagerFiles: {}
     server:
       persistentVolume:
-        enabled: false
-      alertmanager:
         enabled: false
     EOT
   ]
